@@ -2,18 +2,14 @@
 
 namespace ScryfallObjects;
 
-public class CardPart {
-	public CardPart(string @object, Guid id, string component, string name, string typeLine, string uri) {
-		Object = @object;
+public class CardPart : BaseObject{
+	public CardPart(string objectType, Guid id, string component, string name, string typeLine, string uri) : base(objectType){
 		Id = id;
 		Component = component;
 		Name = name;
 		TypeLine = typeLine;
 		Uri = uri;
 	}
-
-	[JsonPropertyName("object")]
-	public string Object { get; set; }
 
 	[JsonPropertyName("id")]
 	public Guid Id { get; set; }

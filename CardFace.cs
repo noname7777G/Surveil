@@ -2,9 +2,8 @@
 
 namespace ScryfallObjects;
 
-public class CardFace {
-	public CardFace(string @object, string name, string printedName, string manaCost, double cmc, List<string> colors, List<string> colorIndicator, string typeLine, string printedTypeLine, string oracleText, string printedText, string flavorText, string artist, Guid? artistId, Guid? illustrationId, ImageUris imageUris) {
-		Object = @object;
+public class CardFace : BaseObject{
+	public CardFace(string objectType, string name, string printedName, string manaCost, double cmc, List<string> colors, List<string> colorIndicator, string typeLine, string printedTypeLine, string oracleText, string printedText, string flavorText, string artist, Guid? artistId, Guid? illustrationId, ImageUris imageUris) : base(objectType){
 		Name = name;
 		PrintedName = printedName;
 		ManaCost = manaCost;
@@ -21,9 +20,6 @@ public class CardFace {
 		IllustrationId = illustrationId;
 		ImageUris = imageUris;
 	}
-
-	[JsonPropertyName("object")]
-	public string Object { get; set; }
 
 	[JsonPropertyName("name")]
 	public string Name { get; set; }
