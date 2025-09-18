@@ -316,10 +316,5 @@ public class Card : BaseObject{
 	public string SecurityStamp { get; set; }
 
 
-	public static List<Card> LoadCards(string bulkDataPath) {
-		string JsonIn = File.ReadAllText(bulkDataPath);
-		List<Card>? cards = JsonSerializer.Deserialize<List<Card>>(JsonIn) ?? throw new Exception("Error deserializing bulk data");
-		return cards;
-	}
 	
 }
