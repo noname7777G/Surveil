@@ -321,4 +321,5 @@ public class Card : BaseObject{
 		List<Card>? cards = JsonSerializer.Deserialize<List<Card>>(JsonIn) ?? throw new Exception("Error deserializing bulk data");
 		return cards;
 	}
+	
 }
