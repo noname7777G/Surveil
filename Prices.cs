@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace ScryfallObjects;
+namespace Surveil;
 
 public class Prices {
 	public Prices(decimal? usd, decimal? usdFoil, decimal? usdEtched, decimal? eur, decimal? tix) {

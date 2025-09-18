@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Text.Json.Serialization;
-namespace ScryfallObjects;
+namespace Surveil;
 public abstract class BaseObject{
 	public BaseObject(string objectType) {
 		ObjectType = objectType;

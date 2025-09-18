@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace ScryfallObjects;
+namespace Surveil;
 
 public class Legalities {
 	public Legalities(string standard, string future, string historic, string pioneer, string modern, string legacy, string pauper, string vintage, string penny, string commander, string brawl, string historicBrawl, string alchemy, string pauperCommander, string duel, string oldschool, string premodern) {

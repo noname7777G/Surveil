@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Text.Json;
-namespace ScryfallObjects;
+namespace Surveil;
 
 public class CardCollection : List<Card> {
 

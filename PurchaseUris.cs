@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace ScryfallObjects;
+namespace Surveil;
 
 public class PurchaseUris {
 	public PurchaseUris(string tcgplayer, string cardmarket, string ebay) {

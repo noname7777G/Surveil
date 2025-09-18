@@ -2,7 +2,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace ScryfallObjects;
+namespace Surveil;
 public class Ruling : BaseObject {
 	public Ruling(string objectType, string oracleId, string source, string publishedAt, string comment) : base(objectType) {
 		this.OracleId = oracleId;

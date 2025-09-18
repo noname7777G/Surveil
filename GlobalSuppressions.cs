@@ -5,4 +5,4 @@
 
 using System.Diagnostics.CodeAnalysis;
 
-[assembly: SuppressMessage("Style", "IDE0290:Use primary constructor", Justification = "Annoying", Scope = "namespaceanddescendants", Target = "~N:ScryfallObjects")]
+[assembly: SuppressMessage("Style", "IDE0290:Use primary constructor", Justification = "Annoying", Scope = "namespaceanddescendants", Target = "~N:Surveil")]

@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace ScryfallObjects;
+namespace Surveil;
 
 public class CardPart : BaseObject{
 	public CardPart(string objectType, Guid id, string component, string name, string typeLine, string uri) : base(objectType){

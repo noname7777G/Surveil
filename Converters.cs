@@ -2,7 +2,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace ScryfallObjects;
+namespace Surveil;
 /// <summary>
 /// Parses a Scryfall "released_at" date string (e.g. "2019-05-03") into DateTime?.
 /// </summary>

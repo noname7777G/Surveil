@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace ScryfallObjects;
+namespace Surveil;
 
 public class RelatedUris {
 	public RelatedUris(string gatherer, string tcgplayerDecks, string edhrec, string mtgtop8) {

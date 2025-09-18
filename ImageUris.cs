@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace ScryfallObjects;
+namespace Surveil;
 
 public class ImageUris {
 	public ImageUris(string small, string normal, string large, string png, string artCrop, string borderCrop) {
