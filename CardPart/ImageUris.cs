@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Surveil;
+namespace Surveil.CardPart;
 
 public class ImageUris {
 	public ImageUris(string small, string normal, string large, string png, string artCrop, string borderCrop) {

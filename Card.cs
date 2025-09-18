@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text.Json;
+﻿using Surveil.CardPart;
 using System.Text.Json.Serialization;
-
 namespace Surveil;
 
-public class Card : BaseObject{
+public class Card : BaseObject {
 
-	public Card(string objectType, Guid id, Guid? oracleId, List<int> multiverseIds, int? mtgoId, int? mtgoFoilId, int? arenaId, int? tcgplayerId, int? tcgplayerEtchedId, int? cardmarketId, string name, string printedName, string language, DateTime? releasedAt, string uri, string scryfallUri, string layout, bool highresImage, string imageStatus, ImageUris imageUris, List<CardFace> cardFaces, string manaCost, double cmc, List<string> colors, List<string> colorIdentity, List<string> colorIndicator, string oracleText, string printedText, string typeLine, string printedTypeLine, string power, string toughness, string loyalty, string flavorName, string flavorText, string artist, List<Guid> artistIds, Guid? illustrationId, string borderColor, string frame, List<string> frameEffects, bool fullArt, bool textless, bool booster, bool reserved, bool promo, List<string> promoTypes, bool reprint, string rarity, bool variation, string variationOf, Guid setId, string set, string setName, string setType, string setUri, string setSearchUri, string scryfallSetUri, string rulingsUri, string printsSearchUri, string collectorNumber, bool digital, bool foil, bool nonfoil, List<string> finishes, List<string> games, bool oversized, List<string> producedMana, Legalities legalities, bool storySpotlight, int? edhrecRank, int? pennyRank, Prices prices, RelatedUris relatedUris, PurchaseUris purchaseUris, List<CardPart> allParts, string securityStamp) : base(objectType){
+	public Card(string objectType, Guid id, Guid? oracleId, List<int> multiverseIds, int? mtgoId, int? mtgoFoilId, int? arenaId, int? tcgplayerId, int? tcgplayerEtchedId, int? cardmarketId, string name, string printedName, string language, DateTime? releasedAt, string uri, string scryfallUri, string layout, bool highresImage, string imageStatus, ImageUris imageUris, List<CardFace> cardFaces, string manaCost, double cmc, List<string> colors, List<string> colorIdentity, List<string> colorIndicator, string oracleText, string printedText, string typeLine, string printedTypeLine, string power, string toughness, string loyalty, string flavorName, string flavorText, string artist, List<Guid> artistIds, Guid? illustrationId, string borderColor, string frame, List<string> frameEffects, bool fullArt, bool textless, bool booster, bool reserved, bool promo, List<string> promoTypes, bool reprint, string rarity, bool variation, string variationOf, Guid setId, string set, string setName, string setType, string setUri, string setSearchUri, string scryfallSetUri, string rulingsUri, string printsSearchUri, string collectorNumber, bool digital, bool foil, bool nonfoil, List<string> finishes, List<string> games, bool oversized, List<string> producedMana, Legalities legalities, bool storySpotlight, int? edhrecRank, int? pennyRank, Prices prices, RelatedUris relatedUris, PurchaseUris purchaseUris, List<RelatedPart> allParts, string securityStamp) : base(objectType) {
 		Id = id;
 		OracleId = oracleId;
 		MultiverseIds = multiverseIds;
@@ -310,11 +307,11 @@ public class Card : BaseObject{
 	public PurchaseUris PurchaseUris { get; set; }
 
 	[JsonPropertyName("all_parts")]
-	public List<CardPart> AllParts { get; set; }
+	public List<RelatedPart> AllParts { get; set; }
 
 	[JsonPropertyName("security_stamp")]
 	public string SecurityStamp { get; set; }
 
 
-	
+
 }

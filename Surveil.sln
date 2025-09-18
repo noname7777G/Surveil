@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36203.30
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScryfallObjects", "ScryfallObjects.csproj", "{95AA81F7-EED8-4BE6-8884-9F77CB5A1D67}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Surveil", "Surveil.csproj", "{95AA81F7-EED8-4BE6-8884-9F77CB5A1D67}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScryfallObjectsTests", "..\ScryfallObjectsTests\ScryfallObjectsTests.csproj", "{EB58BBB9-F451-4113-BB42-B36832F6A5A4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Surveil_tests", "..\ScryfallObjectsTests\Surveil_tests.csproj", "{EB58BBB9-F451-4113-BB42-B36832F6A5A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

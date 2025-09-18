@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Surveil;
+namespace Surveil.CardPart;
 
 public class RelatedUris {
 	public RelatedUris(string gatherer, string tcgplayerDecks, string edhrec, string mtgtop8) {

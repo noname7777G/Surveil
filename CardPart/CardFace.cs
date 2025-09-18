@@ -1,9 +1,9 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Surveil;
+namespace Surveil.CardPart;
 
-public class CardFace : BaseObject{
-	public CardFace(string objectType, string name, string printedName, string manaCost, double cmc, List<string> colors, List<string> colorIndicator, string typeLine, string printedTypeLine, string oracleText, string printedText, string flavorText, string artist, Guid? artistId, Guid? illustrationId, ImageUris imageUris) : base(objectType){
+public class CardFace : BaseObject {
+	public CardFace(string objectType, string name, string printedName, string manaCost, double cmc, List<string> colors, List<string> colorIndicator, string typeLine, string printedTypeLine, string oracleText, string printedText, string flavorText, string artist, Guid? artistId, Guid? illustrationId, ImageUris imageUris) : base(objectType) {
 		Name = name;
 		PrintedName = printedName;
 		ManaCost = manaCost;

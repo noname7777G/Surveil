@@ -1,9 +1,9 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Surveil;
+namespace Surveil.CardPart;
 
-public class CardPart : BaseObject{
-	public CardPart(string objectType, Guid id, string component, string name, string typeLine, string uri) : base(objectType){
+public class RelatedPart : BaseObject{
+	public RelatedPart(string objectType, Guid id, string component, string name, string typeLine, string uri) : base(objectType){
 		Id = id;
 		Component = component;
 		Name = name;

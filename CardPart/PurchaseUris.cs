@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Surveil;
+namespace Surveil.CardPart;
 
 public class PurchaseUris {
 	public PurchaseUris(string tcgplayer, string cardmarket, string ebay) {

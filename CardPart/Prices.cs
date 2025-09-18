@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Surveil;
+namespace Surveil.CardPart;
 
 public class Prices {
 	public Prices(decimal? usd, decimal? usdFoil, decimal? usdEtched, decimal? eur, decimal? tix) {
