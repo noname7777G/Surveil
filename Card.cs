@@ -19,45 +19,45 @@ public class CArray : ICardProperty { }
 public class Card : Dictionary<string, ICardProperty> {
 
 	public int ScryfallId { get; set; }
-	public string Lang { get; set; }
-	public string Layout { get; set; }
-	public Uri PrintsSearchUri { get; set; }
-	public Uri RulingsUri { get; set; }
-	public Uri ScryfallUri { get; set; }
-	public Uri Uri { get; set; }
+	public required string Lang { get; set; }
+	public required string Layout { get; set; }
+	public required Uri PrintsSearchUri { get; set; }
+	public required Uri RulingsUri { get; set; }
+	public required Uri ScryfallUri { get; set; }
+	public required Uri Uri { get; set; }
 	public Decimal Cmc { get; set; }
-	public CColors ColorIdentity { get; set; }
-	public Array Keywords { get; set; }
+	public required CColors ColorIdentity { get; set; }
+	public required Array Keywords { get; set; }
 	public Legalities Legalities { get; set; }
-	public string Name { get; set; }
+	public required string Name { get; set; }
 	public bool Reserved { get; set; }
-	public string TypeLine { get; set; }
+	public required string TypeLine { get; set; }
 	public bool Booster { get; set; }
-	public string BorderColor { get; set; }
+	public required string BorderColor { get; set; }
 	public Guid CardBackId { get; set; }
-	public string CollectorNumber { get; set; }
+	public required string CollectorNumber { get; set; }
 	public bool Digital { get; set; }
-	public Array finishes { get; set; }
-	public string frame { get; set; }
-	public bool full_art { get; set; }
-	public Array games { get; set; }
-	public bool highres_image { get; set; }
-	public string image_status { get; set; }
-	public bool oversized { get; set; }
-	public Prices prices { get; set; }
-	public bool promo { get; set; }
-	public string rarity { get; set; }
-	public RelatedUris related_uris { get; set; }
-	public DateTime released_at { get; set; }
-	public bool reprint { get; set; }
-	public Uri scryfall_set_uri { get; set; }
-	public string set_name { get; set; }
-	public Uri set_search_uri { get; set; }
-	public string set_type { get; set; }
-	public Uri set_uri { get; set; }
-	public string set { get; set; }
-	public Guid set_id { get; set; }
-	public bool story_spotlight { get; set; }
-	public bool textless { get; set; }
-	public bool variation { get; set; }
+	public required Array Finishes { get; set; }
+	public required string Frame { get; set; }
+	public bool FullArt { get; set; }
+	public required Array Games { get; set; }
+	public bool HighresImage { get; set; }
+	public required string ImageStatus { get; set; }
+	public bool Oversized { get; set; }
+	public Prices Prices { get; set; }
+	public bool Promo { get; set; }
+	public required string Rarity { get; set; }
+	public RelatedUris RelatedUris { get; set; }
+	public DateTime ReleasedAt { get; set; }
+	public bool Reprint { get; set; }
+	public required Uri ScryfallSetUri { get; set; }
+	public required string SetName { get; set; }
+	public required Uri SetSearchUri { get; set; }
+	public required string SetType { get; set; }
+	public required Uri SetUri { get; set; }
+	public required string Set { get; set; }
+	public Guid SetId { get; set; }
+	public bool StorySpotlight { get; set; }
+	public bool Textless { get; set; }
+	public bool Variation { get; set; }
 }
