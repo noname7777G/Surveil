@@ -1,15 +1,9 @@
-﻿using System;
-using System.Linq.Expressions;
-using System.Net.Http.Json;
-using System.Runtime.Serialization;
+﻿using System.Net.Http.Json;
 using System.Text.Json;
-using System.Text.Json.Nodes;
-using System.Text.Json.Serialization;
 
 namespace Surveil;
 
 public static class BulkDataRetriever {
-
 	public enum BulkDataType {
 		default_cards,
 		oracle_cards,
@@ -27,34 +21,33 @@ public static class BulkDataRetriever {
 			}
 		}
 		set {
-			if(value == null || value == ""){
+			if(value == null || value == "") {
 				throw new DataRetrievalException("User-Agent cannot be empty or null");
 			}
 			client.DefaultRequestHeaders.Remove("User-Agent");
 			client.DefaultRequestHeaders.Add("User-Agent", value);
 		}
 	}
-	
+
 	private static string _bulkDataPath = "";
 	public static string BulkDataPath {
 		get {
-			return _bulkDataPath;	
+			return _bulkDataPath;
 		}
 		set {
 			if(value == null || value == "") {
 				throw new DataRetrievalException("No path provided");
-			} 
-			else if(!Path.Exists(value)) {
+			} else if(!Path.Exists(value)) {
 				throw new DataRetrievalException("Invalid path provided");
 			}
 			_bulkDataPath = value;
 		}
 	}
-	
+
 	static BulkDataRetriever() {
 		client.DefaultRequestHeaders.Add("Accept", "application/json");
-	}	
-	
+	}
+
 
 	public static async Task FetchCards(BulkDataType bulkDataType = BulkDataType.default_cards) {
 

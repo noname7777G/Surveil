@@ -310,7 +310,7 @@ public class Card : BaseObject {
 	public List<RelatedPart> AllParts { get; set; }
 
 	[JsonPropertyName("security_stamp")]
-	public string SecurityStamp { get; set; }
+	public string? SecurityStamp { get; set; }
 
 
 
