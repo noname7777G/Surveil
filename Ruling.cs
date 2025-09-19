@@ -3,8 +3,8 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Surveil;
-public class Ruling : BaseObject {
-	public Ruling(string objectType, string oracleId, string source, string publishedAt, string comment) : base(objectType) {
+public class Ruling {
+	public Ruling(string oracleId, string source, string publishedAt, string comment) {
 		this.OracleId = oracleId;
 		this.Source = source;
 		this.PublishedAt = publishedAt;
