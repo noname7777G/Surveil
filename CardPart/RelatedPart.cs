@@ -2,27 +2,19 @@
 
 namespace Surveil.CardPart;
 
-public class RelatedPart : BaseObject{
-	public RelatedPart(string objectType, Guid id, string component, string name, string typeLine, string uri) : base(objectType){
-		Id = id;
-		Component = component;
-		Name = name;
-		TypeLine = typeLine;
-		Uri = uri;
-	}
-
+public class RelatedPart {
 	[JsonPropertyName("id")]
-	public Guid Id { get; set; }
+	public int Id { get; set; }
 
 	[JsonPropertyName("component")]
-	public string Component { get; set; }
+	public required string Component { get; set; }
 
 	[JsonPropertyName("name")]
-	public string Name { get; set; }
+	public required string Name { get; set; }
 
 	[JsonPropertyName("type_line")]
-	public string TypeLine { get; set; }
+	public required string TypeLine { get; set; }
 
 	[JsonPropertyName("uri")]
-	public string Uri { get; set; }
+	public required string Uri { get; set; }
 }

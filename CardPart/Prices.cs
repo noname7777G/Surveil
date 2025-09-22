@@ -3,14 +3,6 @@
 namespace Surveil.CardPart;
 
 public class Prices {
-	public Prices(decimal? usd, decimal? usdFoil, decimal? usdEtched, decimal? eur, decimal? tix) {
-		Usd = usd;
-		UsdFoil = usdFoil;
-		UsdEtched = usdEtched;
-		Eur = eur;
-		Tix = tix;
-	}
-
 	[JsonPropertyName("usd")]
 	[JsonConverter(typeof(ScryfallPriceConverter))]
 	public decimal? Usd { get; set; }

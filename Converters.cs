@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Surveil;
@@ -30,7 +29,7 @@ public class ScryfallDateConverter : JsonConverter<DateTime?> {
 }
 
 /// <summary>
-/// Converts Scryfall price strings ("1.23", null) into decimal?.
+/// Converts Scryfall price strings (e.g. "1.23", null) into decimal?.
 /// </summary>
 public class ScryfallPriceConverter : JsonConverter<decimal?> {
 	public override decimal? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) {

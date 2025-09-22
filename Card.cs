@@ -2,316 +2,431 @@
 using System.Text.Json.Serialization;
 namespace Surveil;
 
-public class Card : BaseObject {
-
-	public Card(string objectType, Guid id, Guid? oracleId, List<int> multiverseIds, int? mtgoId, int? mtgoFoilId, int? arenaId, int? tcgplayerId, int? tcgplayerEtchedId, int? cardmarketId, string name, string printedName, string language, DateTime? releasedAt, string uri, string scryfallUri, string layout, bool highresImage, string imageStatus, ImageUris imageUris, List<CardFace> cardFaces, string manaCost, double cmc, List<string> colors, List<string> colorIdentity, List<string> colorIndicator, string oracleText, string printedText, string typeLine, string printedTypeLine, string power, string toughness, string loyalty, string flavorName, string flavorText, string artist, List<Guid> artistIds, Guid? illustrationId, string borderColor, string frame, List<string> frameEffects, bool fullArt, bool textless, bool booster, bool reserved, bool promo, List<string> promoTypes, bool reprint, string rarity, bool variation, string variationOf, Guid setId, string set, string setName, string setType, string setUri, string setSearchUri, string scryfallSetUri, string rulingsUri, string printsSearchUri, string collectorNumber, bool digital, bool foil, bool nonfoil, List<string> finishes, List<string> games, bool oversized, List<string> producedMana, Legalities legalities, bool storySpotlight, int? edhrecRank, int? pennyRank, Prices prices, RelatedUris relatedUris, PurchaseUris purchaseUris, List<RelatedPart> allParts, string securityStamp) : base(objectType) {
-		Id = id;
-		OracleId = oracleId;
-		MultiverseIds = multiverseIds;
-		MtgoId = mtgoId;
-		MtgoFoilId = mtgoFoilId;
-		ArenaId = arenaId;
-		TcgplayerId = tcgplayerId;
-		TcgplayerEtchedId = tcgplayerEtchedId;
-		CardmarketId = cardmarketId;
-		Name = name;
-		PrintedName = printedName;
-		Language = language;
-		ReleasedAt = releasedAt;
-		Uri = uri;
-		ScryfallUri = scryfallUri;
-		Layout = layout;
-		HighresImage = highresImage;
-		ImageStatus = imageStatus;
-		ImageUris = imageUris;
-		CardFaces = cardFaces;
-		ManaCost = manaCost;
-		Cmc = cmc;
-		Colors = colors;
-		ColorIdentity = colorIdentity;
-		ColorIndicator = colorIndicator;
-		OracleText = oracleText;
-		PrintedText = printedText;
-		TypeLine = typeLine;
-		PrintedTypeLine = printedTypeLine;
-		Power = power;
-		Toughness = toughness;
-		Loyalty = loyalty;
-		FlavorName = flavorName;
-		FlavorText = flavorText;
-		Artist = artist;
-		ArtistIds = artistIds;
-		IllustrationId = illustrationId;
-		BorderColor = borderColor;
-		Frame = frame;
-		FrameEffects = frameEffects;
-		FullArt = fullArt;
-		Textless = textless;
-		Booster = booster;
-		Reserved = reserved;
-		Promo = promo;
-		PromoTypes = promoTypes;
-		Reprint = reprint;
-		Rarity = rarity;
-		Variation = variation;
-		VariationOf = variationOf;
-		SetId = setId;
-		Set = set;
-		SetName = setName;
-		SetType = setType;
-		SetUri = setUri;
-		SetSearchUri = setSearchUri;
-		ScryfallSetUri = scryfallSetUri;
-		RulingsUri = rulingsUri;
-		PrintsSearchUri = printsSearchUri;
-		CollectorNumber = collectorNumber;
-		Digital = digital;
-		Foil = foil;
-		Nonfoil = nonfoil;
-		Finishes = finishes;
-		Games = games;
-		Oversized = oversized;
-		ProducedMana = producedMana;
-		Legalities = legalities;
-		StorySpotlight = storySpotlight;
-		EdhrecRank = edhrecRank;
-		PennyRank = pennyRank;
-		Prices = prices;
-		RelatedUris = relatedUris;
-		PurchaseUris = purchaseUris;
-		AllParts = allParts;
-		SecurityStamp = securityStamp;
-	}
-
-	[JsonPropertyName("id")]
-	public Guid Id { get; set; }
-
-	[JsonPropertyName("oracle_id")]
-	public Guid? OracleId { get; set; }
-
-	[JsonPropertyName("multiverse_ids")]
-	public List<int> MultiverseIds { get; set; }
-
-	[JsonPropertyName("mtgo_id")]
-	public int? MtgoId { get; set; }
-
-	[JsonPropertyName("mtgo_foil_id")]
-	public int? MtgoFoilId { get; set; }
-
+public class Card {
+	/// <summary>
+	///"This card’s Arena ID, if any. A large percentage of cards are not available on Arena and do not have this ID."
+	/// </summary>
 	[JsonPropertyName("arena_id")]
 	public int? ArenaId { get; set; }
-
+	///<summary>
+	///"A unique ID for this card in Scryfall’s database."
+	///</summary>
+	[JsonPropertyName("id")]
+	public required string Id { get; set; }
+	///<summary>
+	///"A language code for this printing."
+	///</summary>
+	[JsonPropertyName("lang")]
+	public required string Lang { get; set; }
+	///<summary>
+	///"This card’s Magic Online ID (also known as the Catalog ID), if any. A large percentage of cards are not available on Magic Online and do not have this ID."
+	///</summary>
+	[JsonPropertyName("mtgo_id")]
+	public int? MtgoId { get; set; }
+	///<summary>
+	///"This card’s foil Magic Online ID (also known as the Catalog ID), if any. A large percentage of cards are not available on Magic Online and do not have this ID."
+	///</summary>
+	[JsonPropertyName("mtgo_foil_id")]
+	public int? MtgoFoilId { get; set; }
+	///<summary>
+	///"This card’s multiverse IDs on Gatherer, if any, as an array of integers. Note that Scryfall includes many promo cards, tokens, and other esoteric objects that do not have these identifiers."
+	///</summary>
+	[JsonPropertyName("multiverse_ids")]
+	public Array? MultiverseIds { get; set; }
+	///<summary>
+	///"This card’s ID on TCGplayer’s API, also known as the productId."
+	///</summary>
 	[JsonPropertyName("tcgplayer_id")]
 	public int? TcgplayerId { get; set; }
-
+	///<summary>
+	///"This card’s ID on TCGplayer’s API, for its etched version if that version is a separate product."
+	///</summary>
 	[JsonPropertyName("tcgplayer_etched_id")]
 	public int? TcgplayerEtchedId { get; set; }
-
+	///<summary>
+	///"This card’s ID on Cardmarket’s API, also known as the idProduct."
+	///</summary>
 	[JsonPropertyName("cardmarket_id")]
 	public int? CardmarketId { get; set; }
-
-	[JsonPropertyName("name")]
-	public string Name { get; set; }
-
-	[JsonPropertyName("printed_name")]
-	public string PrintedName { get; set; }
-
-	[JsonPropertyName("lang")]
-	public string Language { get; set; }
-
-	[JsonPropertyName("released_at")]
-	[JsonConverter(typeof(ScryfallDateConverter))]
-	public DateTime? ReleasedAt { get; set; }
-
-	[JsonPropertyName("uri")]
-	public string Uri { get; set; }
-
-	[JsonPropertyName("scryfall_uri")]
-	public string ScryfallUri { get; set; }
-
+	///<summary>
+	///"A code for this card’s layout."
+	///</summary>
 	[JsonPropertyName("layout")]
-	public string Layout { get; set; }
-
-	[JsonPropertyName("highres_image")]
-	public bool HighresImage { get; set; }
-
-	[JsonPropertyName("image_status")]
-	public string ImageStatus { get; set; }
-
-	[JsonPropertyName("image_uris")]
-	public ImageUris ImageUris { get; set; }
-
-	[JsonPropertyName("card_faces")]
-	public List<CardFace> CardFaces { get; set; }
-
-	[JsonPropertyName("mana_cost")]
-	public string ManaCost { get; set; }
-
-	[JsonPropertyName("cmc")]
-	public double Cmc { get; set; }
-
-	[JsonPropertyName("colors")]
-	public List<string> Colors { get; set; }
-
-	[JsonPropertyName("color_identity")]
-	public List<string> ColorIdentity { get; set; }
-
-	[JsonPropertyName("color_indicator")]
-	public List<string> ColorIndicator { get; set; }
-
-	[JsonPropertyName("oracle_text")]
-	public string OracleText { get; set; }
-
-	[JsonPropertyName("printed_text")]
-	public string PrintedText { get; set; }
-
-	[JsonPropertyName("type_line")]
-	public string TypeLine { get; set; }
-
-	[JsonPropertyName("printed_type_line")]
-	public string PrintedTypeLine { get; set; }
-
-	[JsonPropertyName("power")]
-	public string Power { get; set; }
-
-	[JsonPropertyName("toughness")]
-	public string Toughness { get; set; }
-
-	[JsonPropertyName("loyalty")]
-	public string Loyalty { get; set; }
-
-	[JsonPropertyName("flavor_name")]
-	public string FlavorName { get; set; }
-
-	[JsonPropertyName("flavor_text")]
-	public string FlavorText { get; set; }
-
-	[JsonPropertyName("artist")]
-	public string Artist { get; set; }
-
-	[JsonPropertyName("artist_ids")]
-	public List<Guid> ArtistIds { get; set; }
-
-	[JsonPropertyName("illustration_id")]
-	public Guid? IllustrationId { get; set; }
-
-	[JsonPropertyName("border_color")]
-	public string BorderColor { get; set; }
-
-	[JsonPropertyName("frame")]
-	public string Frame { get; set; }
-
-	[JsonPropertyName("frame_effects")]
-	public List<string> FrameEffects { get; set; }
-
-	[JsonPropertyName("full_art")]
-	public bool FullArt { get; set; }
-
-	[JsonPropertyName("textless")]
-	public bool Textless { get; set; }
-
-	[JsonPropertyName("booster")]
-	public bool Booster { get; set; }
-
-	[JsonPropertyName("reserved")]
-	public bool Reserved { get; set; }
-
-	[JsonPropertyName("promo")]
-	public bool Promo { get; set; }
-
-	[JsonPropertyName("promo_types")]
-	public List<string> PromoTypes { get; set; }
-
-	[JsonPropertyName("reprint")]
-	public bool Reprint { get; set; }
-
-	[JsonPropertyName("rarity")]
-	public string Rarity { get; set; }
-
-	[JsonPropertyName("variation")]
-	public bool Variation { get; set; }
-
-	[JsonPropertyName("variation_of")]
-	public string VariationOf { get; set; }
-
-	[JsonPropertyName("set_id")]
-	public Guid SetId { get; set; }
-
-	[JsonPropertyName("set")]
-	public string Set { get; set; }
-
-	[JsonPropertyName("set_name")]
-	public string SetName { get; set; }
-
-	[JsonPropertyName("set_type")]
-	public string SetType { get; set; }
-
-	[JsonPropertyName("set_uri")]
-	public string SetUri { get; set; }
-
-	[JsonPropertyName("set_search_uri")]
-	public string SetSearchUri { get; set; }
-
-	[JsonPropertyName("scryfall_set_uri")]
-	public string ScryfallSetUri { get; set; }
-
-	[JsonPropertyName("rulings_uri")]
-	public string RulingsUri { get; set; }
-
+	public required string Layout { get; set; }
+	///<summary>
+	///"A unique ID for this card’s oracle identity. This value is consistent across reprinted card editions, and unique among different cards with the same name (tokens, Unstable variants, etc). Always present except for the reversible_card layout where it will be absent; oracle_id will be found on each face instead."
+	///</summary>
+	[JsonPropertyName("oracle_id")]
+	public string? OracleId { get; set; }
+	///<summary>
+	///"A link to where you can begin paginating all re/prints for this card on Scryfall’s API."
+	///</summary>
 	[JsonPropertyName("prints_search_uri")]
-	public string PrintsSearchUri { get; set; }
-
-	[JsonPropertyName("collector_number")]
-	public string CollectorNumber { get; set; }
-
-	[JsonPropertyName("digital")]
-	public bool Digital { get; set; }
-
-	[JsonPropertyName("foil")]
-	public bool Foil { get; set; }
-
-	[JsonPropertyName("nonfoil")]
-	public bool Nonfoil { get; set; }
-
-	[JsonPropertyName("finishes")]
-	public List<string> Finishes { get; set; }
-
-	[JsonPropertyName("games")]
-	public List<string> Games { get; set; }
-
-	[JsonPropertyName("oversized")]
-	public bool Oversized { get; set; }
-
-	[JsonPropertyName("produced_mana")]
-	public List<string> ProducedMana { get; set; }
-
-	[JsonPropertyName("legalities")]
-	public Legalities Legalities { get; set; }
-
-	[JsonPropertyName("story_spotlight")]
-	public bool StorySpotlight { get; set; }
-
+	public required Uri PrintsSearchUri { get; set; }
+	///<summary>
+	///"A link to this card’s rulings list on Scryfall’s API."
+	///</summary>
+	[JsonPropertyName("rulings_uri")]
+	public required Uri RulingsUri { get; set; }
+	///<summary>
+	///"A link to this card’s permapage on Scryfall’s website."
+	///</summary>
+	[JsonPropertyName("scryfall_uri")]
+	public required Uri ScryfallUri { get; set; }
+	///<summary>
+	///"A link to this card object on Scryfall’s API."
+	///</summary>
+	[JsonPropertyName("uri")]
+	public required Uri Uri { get; set; }
+	///<summary>
+	///"If this card is closely related to other cards, this property will be an array with Related Card Objects."
+	///</summary>
+	[JsonPropertyName("all_parts")]
+	public Array? AllParts { get; set; }
+	///<summary>
+	///"An array of Card Face objects, if this card is multifaced."
+	///</summary>
+	[JsonPropertyName("card_faces")]
+	public Array? CardFaces { get; set; }
+	///<summary>
+	///"The card’s mana value. Note that some funny cards have fractional mana costs."
+	///</summary>
+	[JsonPropertyName("cmc")]
+	public Decimal Cmc { get; set; }
+	///<summary>
+	///"This card’s color identity."
+	///</summary>
+	[JsonPropertyName("color_identity")]
+	public required char[] ColorIdentity { get; set; }
+	///<summary>
+	///"The colors in this card’s color indicator, if any. A null value for this field indicates the card does not have one."
+	///</summary>
+	[JsonPropertyName("color_indicator")]
+	public char[]? ColorIndicator { get; set; }
+	///<summary>
+	///"This card’s colors, if the overall card has colors defined by the rules. Otherwise the colors will be on the card_faces objects, see below."
+	///</summary>
+	[JsonPropertyName("colors")]
+	public char[]? Colors { get; set; }
+	///<summary>
+	///"This face’s defense, if any."
+	///</summary>
+	[JsonPropertyName("defense")]
+	public string? Defense { get; set; }
+	///<summary>
+	///"This card’s overall rank/popularity on EDHREC. Not all cards are ranked."
+	///</summary>
 	[JsonPropertyName("edhrec_rank")]
 	public int? EdhrecRank { get; set; }
-
+	///<summary>
+	///"True if this card is on the Commander Game Changer list."
+	///</summary>
+	[JsonPropertyName("game_changer")]
+	public bool? GameChanger { get; set; }
+	///<summary>
+	///"This card’s hand modifier, if it is Vanguard card. This value will contain a delta, such as -1."
+	///</summary>
+	[JsonPropertyName("hand_modifier")]
+	public string? HandModifier { get; set; }
+	///<summary>
+	///"An array of keywords that this card uses, such as 'Flying' and 'Cumulative upkeep'."
+	///</summary>
+	[JsonPropertyName("keywords")]
+	public required Array Keywords { get; set; }
+	///<summary>
+	///"An object describing the legality of this card across play formats. Possible legalities are legal, not_legal, restricted, and banned."
+	///</summary>
+	[JsonPropertyName("legalities")]
+	public required Legalities Legalities { get; set; }
+	///<summary>
+	///"This card’s life modifier, if it is Vanguard card. This value will contain a delta, such as +2."
+	///</summary>
+	[JsonPropertyName("life_modifier")]
+	public string? LifeModifier { get; set; }
+	///<summary>
+	///"This loyalty if any. Note that some cards have loyalties that are not numeric, such as X."
+	///</summary>
+	[JsonPropertyName("loyalty")]
+	public string? Loyalty { get; set; }
+	///<summary>
+	///"The mana cost for this card. This value will be any empty string. If the cost is absent. Remember that per the game rules, a missing mana cost and a mana cost of {0} are different values. Multi-faced cards will report this value in card faces."
+	///</summary>
+	[JsonPropertyName("mana_cost")]
+	public string? ManaCost { get; set; }
+	///<summary>
+	///"The name of this card. If this card has multiple faces, this field will contain both names separated by _//_."
+	///</summary>
+	[JsonPropertyName("name")]
+	public required string Name { get; set; }
+	///<summary>
+	///"The Oracle text for this card, if any."
+	///</summary>
+	[JsonPropertyName("oracle_text")]
+	public string? OracleText { get; set; }
+	///<summary>
+	///"This card’s rank/popularity on Penny Dreadful. Not all cards are ranked."
+	///</summary>
 	[JsonPropertyName("penny_rank")]
 	public int? PennyRank { get; set; }
-
+	///<summary>
+	///"This card’s power, if any. Note that some cards have powers that are not numeric, such as *."
+	///</summary>
+	[JsonPropertyName("power")]
+	public string? Power { get; set; }
+	///<summary>
+	///"Colors of mana that this card could produce."
+	///</summary>
+	[JsonPropertyName("produced_mana")]
+	public char[]? ProducedMana { get; set; }
+	///<summary>
+	///"True if this card is on the Reserved List."
+	///</summary>
+	[JsonPropertyName("reserved")]
+	public bool Reserved { get; set; }
+	///<summary>
+	///"This card’s toughness, if any. Note that some cards have toughnesses that are not numeric, such as *."
+	///</summary>
+	[JsonPropertyName("toughness")]
+	public string? Toughness { get; set; }
+	///<summary>
+	///"The type line of this card."
+	///</summary>
+	[JsonPropertyName("type_line")]
+	public required string TypeLine { get; set; }
+	///<summary>
+	///"The name of the illustrator of this card. Newly spoiled cards may not have this field yet."
+	///</summary>
+	[JsonPropertyName("artist")]
+	public string? Artist { get; set; }
+	///<summary>
+	///"The IDs of the artists that illustrated this card. Newly spoiled cards may not have this field yet."
+	///</summary>
+	[JsonPropertyName("artist_ids")]
+	public Array? ArtistIds { get; set; }
+	///<summary>
+	///"The lit Unfinity attractions lights on this card, if any."
+	///</summary>
+	[JsonPropertyName("attraction_lights")]
+	public Array? AttractionLights { get; set; }
+	///<summary>
+	///"Whether this card is found in boosters."
+	///</summary>
+	[JsonPropertyName("booster")]
+	public bool Booster { get; set; }
+	///<summary>
+	///"This card’s border color: black, white, borderless, yellow, silver, or gold."
+	///</summary>
+	[JsonPropertyName("border_color")]
+	public required string BorderColor { get; set; }
+	///<summary>
+	///"The Scryfall ID for the card back design present on this card."
+	///</summary>
+	[JsonPropertyName("card_back_id")]
+	public int CardBackId { get; set; }
+	///<summary>
+	///"This card’s collector number. Note that collector numbers can contain non-numeric characters, such as letters or ."
+	///</summary>
+	[JsonPropertyName("collector_number")]
+	public required string CollectorNumber { get; set; }
+	///<summary>
+	///"True if you should consider avoiding use of this print downstream."
+	///</summary>
+	[JsonPropertyName("content_warning")]
+	public bool? ContentWarning { get; set; }
+	///<summary>
+	///"True if this card was only released in a video game."
+	///</summary>
+	[JsonPropertyName("digital")]
+	public bool Digital { get; set; }
+	///<summary>
+	///"An array of computer-readable flags that indicate if this card can come in foil, nonfoil, or etched finishes."
+	///</summary>
+	[JsonPropertyName("finishes")]
+	public required Array Finishes { get; set; }
+	///<summary>
+	///"The just-for-fun name printed on the card (such as for Godzilla series cards)."
+	///</summary>
+	[JsonPropertyName("flavor_name")]
+	public string? FlavorName { get; set; }
+	///<summary>
+	///"The flavor text, if any."
+	///</summary>
+	[JsonPropertyName("flavor_text")]
+	public string? FlavorText { get; set; }
+	///<summary>
+	///"This card’s frame effects, if any."
+	///</summary>
+	[JsonPropertyName("frame_effects")]
+	public Array? FrameEffects { get; set; }
+	///<summary>
+	///"This card’s frame layout."
+	///</summary>
+	[JsonPropertyName("frame")]
+	public required string Frame { get; set; }
+	///<summary>
+	///"True if this card’s artwork is larger than normal."
+	///</summary>
+	[JsonPropertyName("full_art")]
+	public bool FullArt { get; set; }
+	///<summary>
+	///"A list of games that this card print is available in, paper, arena, and/or mtgo."
+	///</summary>
+	[JsonPropertyName("games")]
+	public required Array Games { get; set; }
+	///<summary>
+	///"True if this card’s imagery is high resolution."
+	///</summary>
+	[JsonPropertyName("highres_image")]
+	public bool HighresImage { get; set; }
+	///<summary>
+	///"A unique identifier for the card artwork that remains consistent across reprints. Newly spoiled cards may not have this field yet."
+	///</summary>
+	[JsonPropertyName("illustration_id")]
+	public int? IllustrationId { get; set; }
+	///<summary>
+	///"A computer-readable indicator for the state of this card’s image, one of missing, placeholder, lowres, or highres_scan."
+	///</summary>
+	[JsonPropertyName("image_status")]
+	public required string ImageStatus { get; set; }
+	///<summary>
+	///"An object listing available imagery for this card. See the Card Imagery article for more information."
+	///</summary>
+	[JsonPropertyName("image_uris")]
+	public ImageUris? ImageUris { get; set; }
+	///<summary>
+	///"True if this card is oversized."
+	///</summary>
+	[JsonPropertyName("oversized")]
+	public bool Oversized { get; set; }
+	///<summary>
+	///"An object containing daily price information for this card, including usd, usd_foil, usd_etched, eur, eur_foil, eur_etched, and tix prices, as strings."
+	///</summary>
 	[JsonPropertyName("prices")]
-	public Prices Prices { get; set; }
-
-	[JsonPropertyName("related_uris")]
-	public RelatedUris RelatedUris { get; set; }
-
+	public required Prices Prices { get; set; }
+	///<summary>
+	///"The localized name printed on this card, if any."
+	///</summary>
+	[JsonPropertyName("printed_name")]
+	public string? PrintedName { get; set; }
+	///<summary>
+	///"The localized text printed on this card, if any."
+	///</summary>
+	[JsonPropertyName("printed_text")]
+	public string? PrintedText { get; set; }
+	///<summary>
+	///"The localized type line printed on this card, if any."
+	///</summary>
+	[JsonPropertyName("printed_type_line")]
+	public string? PrintedTypeLine { get; set; }
+	///<summary>
+	///"True if this card is a promotional print."
+	///</summary>
+	[JsonPropertyName("promo")]
+	public bool Promo { get; set; }
+	///<summary>
+	///"An array of strings describing what categories of promo cards this card falls into."
+	///</summary>
+	[JsonPropertyName("promo_types")]
+	public Array? PromoTypes { get; set; }
+	///<summary>
+	///"An object providing Uris to this card’s listing on major marketplaces. Omitted if the card is unpurchaseable."
+	///</summary>
 	[JsonPropertyName("purchase_uris")]
-	public PurchaseUris PurchaseUris { get; set; }
-
-	[JsonPropertyName("all_parts")]
-	public List<RelatedPart> AllParts { get; set; }
-
+	public PurchaseUris? PurchaseUris { get; set; }
+	///<summary>
+	///"This card’s rarity. One of common, uncommon, rare, special, mythic, or bonus."
+	///</summary>
+	[JsonPropertyName("rarity")]
+	public required string Rarity { get; set; }
+	///<summary>
+	///"An object providing Uris to this card’s listing on other Magic: The Gathering online resources."
+	///</summary>
+	[JsonPropertyName("related_uris")]
+	public required RelatedUris RelatedUris { get; set; }
+	///<summary>
+	///"The date this card was first released."
+	///</summary>
+	[JsonPropertyName("released_at")]
+	public DateTime ReleasedAt { get; set; }
+	///<summary>
+	///"True if this card is a reprint."
+	///</summary>
+	[JsonPropertyName("reprint")]
+	public bool Reprint { get; set; }
+	///<summary>
+	///"A link to this card’s set on Scryfall’s website."
+	///</summary>
+	[JsonPropertyName("scryfall_set_uri")]
+	public required Uri ScryfallSetUri { get; set; }
+	///<summary>
+	///"This card’s full set name."
+	///</summary>
+	[JsonPropertyName("set_name")]
+	public required string SetName { get; set; }
+	///<summary>
+	///"A link to where you can begin paginating this card’s set on the Scryfall API."
+	///</summary>
+	[JsonPropertyName("set_search_uri")]
+	public required Uri SetSearchUri { get; set; }
+	///<summary>
+	///"The type of set this printing is in."
+	///</summary>
+	[JsonPropertyName("set_type")]
+	public required string SetType { get; set; }
+	///<summary>
+	///"A link to this card’s set object on Scryfall’s API."
+	///</summary>
+	[JsonPropertyName("set_uri")]
+	public required Uri SetUri { get; set; }
+	///<summary>
+	///"This card’s set code."
+	///</summary>
+	[JsonPropertyName("set")]
+	public required string Set { get; set; }
+	///<summary>
+	///"This card’s Set object Guid."
+	///</summary>
+	[JsonPropertyName("set_id")]
+	public int SetId { get; set; }
+	///<summary>
+	///"True if this card is a Story Spotlight."
+	///</summary>
+	[JsonPropertyName("story_spotlight")]
+	public bool StorySpotlight { get; set; }
+	///<summary>
+	///"True if the card is printed without text."
+	///</summary>
+	[JsonPropertyName("textless")]
+	public bool Textless { get; set; }
+	///<summary>
+	///"Whether this card is a variation of another printing."
+	///</summary>
+	[JsonPropertyName("variation")]
+	public bool Variation { get; set; }
+	///<summary>
+	///"The printing ID of the printing this card is a variation of."
+	///</summary>
+	[JsonPropertyName("variation_of")]
+	public int? VariationOf { get; set; }
+	///<summary>
+	///"The security stamp on this card, if any. One of oval, triangle, acorn, circle, arena, or heart."
+	///</summary>
 	[JsonPropertyName("security_stamp")]
 	public string? SecurityStamp { get; set; }
+	///<summary>
+	///"This card’s watermark, if any."
+	///</summary>
+	[JsonPropertyName("watermark")]
+	public string? Watermark { get; set; }
+	///<summary>
+	///
+	///</summary>
+	[JsonPropertyName("preview")]
+	public Preview? Preview { get; set; }
 
-
-
+	internal void AddRuling(Ruling ruling) {
+		Rulings ??= [];
+		Rulings.Add(ruling);
+	}
+	public List<Ruling>? Rulings { get; set; }
 }
