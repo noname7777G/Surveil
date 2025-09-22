@@ -1,11 +1,10 @@
 ﻿using Surveil.CardPart;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Surveil;
 
-public interface ICardProperty {
-
-}
+public interface ICardProperty { }
 
 public class CBool : ICardProperty { public bool Value { get; set; } }
 public class CInt : ICardProperty { public int Value { get; set; } }
@@ -17,10 +16,30 @@ public class CColors : ICardProperty {
 public class CUri : ICardProperty { public required Uri Value { get; set; } }
 public class CObject : ICardProperty { public required Dictionary<string, ICardProperty> Value { get; set; } }
 public class CDate : ICardProperty { public required DateOnly Value { get; set; } }
-public class CArray : ICardProperty { }
+public class CArray : ICardProperty {
+	public required int Count { get; set; }
+	public required ICardProperty[] Values { get; set; }
+}
+
+internal class CValueConverter : JsonConverterFactory {
+	public override bool CanConvert(Type typeToConvert) {
+		if(typeToConvert == typeof(string)) {
+			return true;
+		} else if(typeToConvert == typeof(int)) {
+			return true;
+		} else if(typeToConvert == typeof(bool)) {
+			return true;
+		}
+
+		return false;
+	}
+
+	public override JsonConverter? CreateConverter(Type typeToConvert, JsonSerializerOptions options) {
+		throw new NotImplementedException();
+	}
+}
 
 public class Card : Dictionary<string, ICardProperty> {
-
 	[JsonPropertyName("id")]
 	public int ScryfallId { get; set; }
 	[JsonPropertyName("lang")]
@@ -82,6 +101,7 @@ public class Card : Dictionary<string, ICardProperty> {
 	[JsonPropertyName("related_uris")]
 	public required RelatedUris RelatedUris { get; set; }
 	[JsonPropertyName("released_at")]
+	[JsonConverter(typeof(ScryfallDateConverter))]
 	public DateTime ReleasedAt { get; set; }
 	[JsonPropertyName("reprint")]
 	public bool Reprint { get; set; }
