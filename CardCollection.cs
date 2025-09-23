@@ -2,6 +2,7 @@
 namespace Surveil;
 
 public class CardCollection : List<Card> {
+	public CardCollection? ParentCollection { get; private set; }
 	public static CardCollection LoadFromJson(string path) {
 		string JsonIn = File.ReadAllText(path);
 		return JsonSerializer.Deserialize<CardCollection?>(JsonIn) ?? throw new Exception("Error deserializing file");
@@ -21,5 +22,12 @@ public class CardCollection : List<Card> {
 		RulingsAttached = true;
 	}
 
+	public CardCollection CreateSubCollection() {
+		CardCollection collection = [];
+		if(RulingsAttached) { collection.RulingsAttached = true; }
+		collection.ParentCollection = this;
+
+		return collection;
+	}
 
 }
