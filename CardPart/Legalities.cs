@@ -37,13 +37,13 @@ public class Legalities {
 	public required string Brawl { get; set; }
 
 	[JsonPropertyName("historic_brawl")]
-	public required string HistoricBrawl { get; set; }
+	public string? HistoricBrawl { get; set; }
 
 	[JsonPropertyName("alchemy")]
 	public required string Alchemy { get; set; }
 
 	[JsonPropertyName("pauper_commander")]
-	public required string PauperCommander { get; set; }
+	public string? PauperCommander { get; set; }
 
 	[JsonPropertyName("duel")]
 	public required string Duel { get; set; }

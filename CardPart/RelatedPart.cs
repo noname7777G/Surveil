@@ -4,7 +4,7 @@ namespace Surveil.CardPart;
 
 public class RelatedPart {
 	[JsonPropertyName("id")]
-	public int Id { get; set; }
+	public required string Id { get; set; }
 
 	[JsonPropertyName("component")]
 	public required string Component { get; set; }

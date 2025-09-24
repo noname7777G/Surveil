@@ -13,7 +13,7 @@ public class CardCollection : List<Card> {
 
 	public static CardCollection LoadFromJson(string path) {
 		string JsonIn = File.ReadAllText(path);
-		return JsonSerializer.Deserialize<CardCollection?>(JsonIn) ?? throw new Exception("Error deserializing file");
+		return JsonSerializer.Deserialize<CardCollection>(JsonIn) ?? throw new Exception("Error deserializing file");
 	}
 
 	public void AttachRulings(List<Ruling> rulings) {

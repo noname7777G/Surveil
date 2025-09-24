@@ -32,7 +32,7 @@ public class Card {
 	/// This card’s multiverse IDs on Gatherer, if any, as an array of integers. Note that Scryfall includes many promo cards, tokens, and other esoteric objects that do not have these identifiers.
 	/// </summary>
 	[JsonPropertyName("multiverse_ids")]
-	public Array? MultiverseIds { get; set; }
+	public int[]? MultiverseIds { get; set; }
 	/// <summary>
 	/// This card’s ID on TCGplayer’s API, also known as the productId.
 	/// </summary>
@@ -82,12 +82,12 @@ public class Card {
 	/// If this card is closely related to other cards, this property will be an array with Related Card Objects.
 	/// </summary>
 	[JsonPropertyName("all_parts")]
-	public Array? AllParts { get; set; }
+	public RelatedPart[]? AllParts { get; set; }
 	/// <summary>
 	/// An array of Card Face objects, if this card is multifaced.
 	/// </summary>
 	[JsonPropertyName("card_faces")]
-	public Array? CardFaces { get; set; }
+	public CardFace[]? CardFaces { get; set; }
 	/// <summary>
 	/// The card’s mana value. Note that some funny cards have fractional mana costs.
 	/// </summary>
@@ -132,7 +132,7 @@ public class Card {
 	/// An array of keywords that this card uses, such as 'Flying' and 'Cumulative upkeep'.
 	/// </summary>
 	[JsonPropertyName("keywords")]
-	public required Array Keywords { get; set; }
+	public required string[] Keywords { get; set; }
 	/// <summary>
 	/// An object describing the legality of this card across play formats. Possible legalities are legal, not_legal, restricted, and banned.
 	/// </summary>
@@ -192,7 +192,7 @@ public class Card {
 	/// The type line of this card.
 	/// </summary>
 	[JsonPropertyName("type_line")]
-	public required string TypeLine { get; set; }
+	public string? TypeLine { get; set; }
 	/// <summary>
 	/// The name of the illustrator of this card. Newly spoiled cards may not have this field yet.
 	/// </summary>
@@ -202,12 +202,12 @@ public class Card {
 	/// The IDs of the artists that illustrated this card. Newly spoiled cards may not have this field yet.
 	/// </summary>
 	[JsonPropertyName("artist_ids")]
-	public Array? ArtistIds { get; set; }
+	public string[]? ArtistIds { get; set; }
 	/// <summary>
 	/// The lit Unfinity attractions lights on this card, if any.
 	/// </summary>
 	[JsonPropertyName("attraction_lights")]
-	public Array? AttractionLights { get; set; }
+	public int[]? AttractionLights { get; set; }
 	/// <summary>
 	/// Whether this card is found in boosters.
 	/// </summary>
@@ -222,7 +222,7 @@ public class Card {
 	/// The Scryfall ID for the card back design present on this card.
 	/// </summary>
 	[JsonPropertyName("card_back_id")]
-	public int CardBackId { get; set; }
+	public string? CardBackId { get; set; }
 	/// <summary>
 	/// This card’s collector number. Note that collector numbers can contain non-numeric characters, such as letters or .
 	/// </summary>
@@ -242,7 +242,7 @@ public class Card {
 	/// An array of computer-readable flags that indicate if this card can come in foil, nonfoil, or etched finishes.
 	/// </summary>
 	[JsonPropertyName("finishes")]
-	public required Array Finishes { get; set; }
+	public required string[] Finishes { get; set; }
 	/// <summary>
 	/// The just-for-fun name printed on the card (such as for Godzilla series cards).
 	/// </summary>
@@ -257,7 +257,7 @@ public class Card {
 	/// This card’s frame effects, if any.
 	/// </summary>
 	[JsonPropertyName("frame_effects")]
-	public Array? FrameEffects { get; set; }
+	public string[]? FrameEffects { get; set; }
 	/// <summary>
 	/// This card’s frame layout.
 	/// </summary>
@@ -272,7 +272,7 @@ public class Card {
 	/// A list of games that this card print is available in, paper, arena, and/or mtgo.
 	/// </summary>
 	[JsonPropertyName("games")]
-	public required Array Games { get; set; }
+	public required string[] Games { get; set; }
 	/// <summary>
 	/// True if this card’s imagery is high resolution.
 	/// </summary>
@@ -282,7 +282,7 @@ public class Card {
 	/// A unique identifier for the card artwork that remains consistent across reprints. Newly spoiled cards may not have this field yet.
 	/// </summary>
 	[JsonPropertyName("illustration_id")]
-	public int? IllustrationId { get; set; }
+	public string? IllustrationId { get; set; }
 	/// <summary>
 	/// A computer-readable indicator for the state of this card’s image, one of missing, placeholder, lowres, or highres_scan.
 	/// </summary>
@@ -327,7 +327,7 @@ public class Card {
 	/// An array of strings describing what categories of promo cards this card falls into.
 	/// </summary>
 	[JsonPropertyName("promo_types")]
-	public Array? PromoTypes { get; set; }
+	public string[]? PromoTypes { get; set; }
 	/// <summary>
 	/// An object providing Uris to this card’s listing on major marketplaces. Omitted if the card is unpurchaseable.
 	/// </summary>
@@ -387,7 +387,7 @@ public class Card {
 	/// This card’s Set object Guid.
 	/// </summary>
 	[JsonPropertyName("set_id")]
-	public int SetId { get; set; }
+	public required string SetId { get; set; }
 	/// <summary>
 	/// True if this card is a Story Spotlight.
 	/// </summary>
@@ -407,7 +407,7 @@ public class Card {
 	/// The printing ID of the printing this card is a variation of.
 	/// </summary>
 	[JsonPropertyName("variation_of")]
-	public int? VariationOf { get; set; }
+	public string? VariationOf { get; set; }
 	/// <summary>
 	/// The security stamp on this card, if any. One of oval, triangle, acorn, circle, arena, or heart.
 	/// </summary>

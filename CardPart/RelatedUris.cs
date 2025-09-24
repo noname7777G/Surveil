@@ -4,14 +4,14 @@ namespace Surveil.CardPart;
 
 public class RelatedUris {
 	[JsonPropertyName("gatherer")]
-	public required string Gatherer { get; set; }
+	public string? Gatherer { get; set; }
 
 	[JsonPropertyName("tcgplayer_decks")]
-	public required string TcgplayerDecks { get; set; }
+	public string? TcgplayerDecks { get; set; }
 
 	[JsonPropertyName("edhrec")]
-	public required string Edhrec { get; set; }
+	public string? Edhrec { get; set; }
 
 	[JsonPropertyName("mtgtop8")]
-	public required string Mtgtop8 { get; set; }
+	public string? Mtgtop8 { get; set; }
 }

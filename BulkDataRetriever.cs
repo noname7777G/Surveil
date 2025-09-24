@@ -50,6 +50,8 @@ public static class BulkDataRetriever {
 
 
 	public static async Task FetchCards(BulkDataType bulkDataType = BulkDataType.default_cards) {
+		if(client.DefaultRequestHeaders.TryGetValues("User-Agent", out _)) { throw new DataRetrievalException("Tried to fetch data with no User-Agent set."); }
+		if(bulkDataType == BulkDataType.all_cards) { bulkDataType = BulkDataType.default_cards; } //Temp fix.
 
 		string appendStr = bulkDataType.ToString();
 
@@ -57,7 +59,7 @@ public static class BulkDataRetriever {
 		message.EnsureSuccessStatusCode();
 		JsonElement json = await message.Content.ReadFromJsonAsync<JsonElement>();
 		string newUri = json.GetProperty("download_uri").ToString();
-
+		//TODO: Figure out how to buffer this so it can actually download all_cards (>2GB).
 		HttpResponseMessage bulkDataMsg = await client.GetAsync(newUri);
 		bulkDataMsg.EnsureSuccessStatusCode();
 		Stream downloadStream = await bulkDataMsg.Content.ReadAsStreamAsync();
@@ -86,14 +88,8 @@ public static class BulkDataRetriever {
 }
 
 public class DataRetrievalException : Exception {
-	public DataRetrievalException() {
-	}
-
-	public DataRetrievalException(string? message) : base(message) {
-	}
-
-	public DataRetrievalException(string? message, Exception? innerException) : base(message, innerException) {
-	}
-
+	public DataRetrievalException() { }
+	public DataRetrievalException(string? message) : base(message) { }
+	public DataRetrievalException(string? message, Exception? innerException) : base(message, innerException) { }
 }
 

@@ -10,5 +10,5 @@ public class PurchaseUris {
 	public required string Cardmarket { get; set; }
 
 	[JsonPropertyName("ebay")]
-	public required string Ebay { get; set; }
+	public string? Ebay { get; set; }
 }
