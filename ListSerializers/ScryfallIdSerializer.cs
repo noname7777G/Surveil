@@ -1,6 +1,5 @@
-﻿
-namespace Surveil.ListSerializers;
-public class MTGOSerializer : IListSerializer {
+﻿namespace Surveil.ListSerializers;
+public class ScryfallIdSerializer : IListSerializer {
 	public Deck LoadText(IEnumerable<string> list) {
 		throw new NotImplementedException();
 	}

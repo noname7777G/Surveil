@@ -44,7 +44,6 @@ public enum Format {
 	TinyLeaders,
 }
 public class Deck {
-
 	public required string Name { get; set; }
 	public string? Description { get; set; }
 	public char[]? ColorIdentity { get; set; }
