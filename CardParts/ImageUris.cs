@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Surveil.CardPart;
+namespace Surveil.CardParts;
 
 public class ImageUris {
 	[JsonPropertyName("small")]

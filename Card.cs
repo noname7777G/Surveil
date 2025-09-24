@@ -1,4 +1,4 @@
-﻿using Surveil.CardPart;
+﻿using Surveil.CardParts;
 using System.Text.Json.Serialization;
 namespace Surveil;
 
@@ -8,6 +8,7 @@ public class Card {
 	/// </summary>
 	[JsonPropertyName("arena_id")]
 	public int? ArenaId { get; set; }
+	//TODO: Look into switching to GUIDs for all apropriate properties.
 	/// <summary>
 	/// A unique ID for this card in Scryfall’s database.
 	/// </summary>
