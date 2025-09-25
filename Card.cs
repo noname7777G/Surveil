@@ -2,6 +2,13 @@
 using System.Text.Json.Serialization;
 namespace Surveil;
 
+public enum Legality {
+	Legal,
+	NotLegal,
+	Restricted,
+	Banned,
+}
+
 public class Card {
 	/// <summary>
 	/// This card’s Arena ID, if any. A large percentage of cards are not available on Arena and do not have this ID.
@@ -138,7 +145,8 @@ public class Card {
 	/// An object describing the legality of this card across play formats. Possible legalities are legal, not_legal, restricted, and banned.
 	/// </summary>
 	[JsonPropertyName("legalities")]
-	public required Dictionary<string, string> Legalities { get; set; }
+	[JsonConverter(typeof(ScryfallLegalityConverter))]
+	public required Dictionary<string, Legality> Legalities { get; set; }
 	/// <summary>
 	/// This card’s life modifier, if it is Vanguard card. This value will contain a delta, such as +2.
 	/// </summary>

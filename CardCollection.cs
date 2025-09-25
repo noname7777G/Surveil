@@ -58,8 +58,9 @@ public class CardCollection : List<Card> {
 		if(format == Format.None) { return this; }
 
 		CardCollection newCollection = CreateSubCollection();
+		string formatName = format.ToString();
 		foreach(Card card in this) {
-			if(card.Legalities.TryGetValue(format.ToString(), out string? legality) && legality != "banned") {
+			if(card.Legalities.TryGetValue(formatName, out Legality legality) && legality == Legality.Legal || legality == Legality.Restricted) {
 				newCollection.Add(card);
 			}
 		}

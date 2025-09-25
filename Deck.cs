@@ -1,6 +1,8 @@
 ﻿using Surveil.ListSerializers;
 
 namespace Surveil;
+
+//TODO: Base this off of the keys in the legalities dictionary.
 public enum Format {
 	None,
 	Standard,

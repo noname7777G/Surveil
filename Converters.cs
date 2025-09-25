@@ -2,6 +2,43 @@
 using System.Text.Json.Serialization;
 
 namespace Surveil;
+
+public class ScryfallLegalityConverter : JsonConverter<Dictionary<string, Legality>?> {
+	public override Dictionary<string, Legality>? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) {
+		if(reader.TokenType != JsonTokenType.StartObject) { throw new JsonException(); }
+
+		Dictionary<string, Legality> legalities = [];
+
+		while(reader.Read()) {
+			if(reader.TokenType == JsonTokenType.EndObject) { break; }
+
+			if(reader.TokenType != JsonTokenType.PropertyName) { throw new JsonException($"Expect property name at {reader.BytesConsumed} bytes."); }
+
+			string? propertyName = reader.GetString() ?? throw new JsonException($"Property name at {reader.BytesConsumed} bytes is null.");
+
+			reader.Read();
+
+			if(reader.TokenType != JsonTokenType.String) { throw new JsonException($"Value at {reader.BytesConsumed} bytes is not a string."); }
+
+			string value = (string)(reader.GetString() ?? throw new JsonException($"Value at {reader.BytesConsumed} bytes is null."));
+
+			legalities.Add(propertyName, value switch {
+				"legal" => Legality.Legal,
+				"not_legal" => Legality.NotLegal,
+				"banned" => Legality.Banned,
+				"restricted" => Legality.Restricted,
+				_ => throw new JsonException($"Cannot convert {value} At {reader.BytesConsumed} bytes to {typeof(Legality)}."),
+			});
+		}
+
+		return legalities;
+	}
+
+	public override void Write(Utf8JsonWriter writer, Dictionary<string, Legality>? value, JsonSerializerOptions options) {
+		throw new NotImplementedException();
+	}
+}
+
 /// <summary>
 /// Parses a Scryfall "released_at" date string (e.g. "2019-05-03") into DateTime?.
 /// </summary>
