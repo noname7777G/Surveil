@@ -138,7 +138,7 @@ public class Card {
 	/// An object describing the legality of this card across play formats. Possible legalities are legal, not_legal, restricted, and banned.
 	/// </summary>
 	[JsonPropertyName("legalities")]
-	public required Legalities Legalities { get; set; }
+	public required Dictionary<string, string> Legalities { get; set; }
 	/// <summary>
 	/// This card’s life modifier, if it is Vanguard card. This value will contain a delta, such as +2.
 	/// </summary>

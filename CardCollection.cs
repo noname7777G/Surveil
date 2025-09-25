@@ -42,10 +42,27 @@ public class CardCollection : List<Card> {
 	/// </summary>
 	/// <returns></returns>
 	public CardCollection CreateSubCollection() {
-		CardCollection collection = [];
-		if(RulingsAttached) { collection.RulingsAttached = true; }
-		collection.ParentCollection = this;
+		CardCollection newCollection = [];
+		if(RulingsAttached) { newCollection.RulingsAttached = true; }
+		newCollection.ParentCollection = this;
 
-		return collection;
+		return newCollection;
+	}
+
+	/// <summary>
+	/// Returns a <see cref="CardCollection"/> that inherits some of the properties of it's <see cref="ParentCollection"/> and contains only cards legal in the given <paramref name="format"/>.
+	/// </summary>
+	/// <param name="format"></param>
+	/// <returns></returns>
+	public CardCollection CreateSubCollection(Format format) {
+		if(format == Format.None) { return this; }
+
+		CardCollection newCollection = CreateSubCollection();
+		foreach(Card card in this) {
+			if(card.Legalities.TryGetValue(format.ToString(), out string? legality) && legality != "banned") {
+				newCollection.Add(card);
+			}
+		}
+		return newCollection;
 	}
 }

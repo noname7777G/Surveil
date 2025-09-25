@@ -1,7 +1,10 @@
 ﻿using System.Text.Json.Serialization;
 
 namespace Surveil.CardParts;
-
+/// <summary>
+/// An object providing URIs to imagery for this face, if this is a double-sided card. 
+/// <para>If this card is not double-sided, then the image_uris property will be part of the parent object instead.</para>
+/// </summary>
 public class ImageUris {
 	[JsonPropertyName("small")]
 	public required string Small { get; set; }

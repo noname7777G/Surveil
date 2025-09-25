@@ -1,4 +1,6 @@
-﻿namespace Surveil;
+﻿using Surveil.ListSerializers;
+
+namespace Surveil;
 public enum Format {
 	None,
 	Standard,
@@ -53,4 +55,34 @@ public class Deck {
 	public required CardCollection MainBoard { get; set; }
 	public required CardCollection SideBoard { get; set; }
 	public required CardCollection MaybeBoard { get; set; }
+
+	public Card[]? Commanders { get; set; }
+	public Card? Companion { get; set; }
+
+	/// <summary>
+	/// Sets <see cref="LegalCards.ParentCollection"/> to <paramref name="parent"/>.
+	/// <para>Fills <see cref="LegalCards"/> with cards legal in the given <paramref name="format"/></para>
+	/// </summary>
+	/// <param name="name"></param>
+	/// <param name="parent"></param>
+	/// <param name="format"></param>
+	public Deck(string name, CardCollection parent, Format format) {
+		Name = name;
+		LegalCards = parent.CreateSubCollection(format);
+		Format = format;
+	}
+
+	public static Deck LoadFromFile(IListSerializer listSerializer, string path) {
+		return listSerializer.LoadFile(path);
+	}
+	public static Deck LoadFromText(IListSerializer listSerializer, string list) {
+		return listSerializer.LoadText(list);
+	}
+
+	public void SaveToFile(IListSerializer listSerializer, string path) {
+		listSerializer.SaveFile(path, this);
+	}
+	public string SaveToText(IListSerializer listSerializer) {
+		return listSerializer.ToText(this);
+	}
 }

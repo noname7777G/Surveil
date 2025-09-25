@@ -1,10 +1,10 @@
-﻿namespace Surveil;
+﻿namespace Surveil.ListSerializers;
 public interface IListSerializer {
 	public Deck LoadText(string list) {
 		return LoadText(list.Split('\n'));
 	}
 	public Deck LoadText(IEnumerable<string> list);
-	public Deck LoadFile(String path) {
+	public Deck LoadFile(string path) {
 		string list = File.ReadAllText(path);
 		return LoadText(list);
 	}

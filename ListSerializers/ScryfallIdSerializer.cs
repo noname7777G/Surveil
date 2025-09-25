@@ -1,5 +1,6 @@
 ﻿namespace Surveil.ListSerializers;
 public class ScryfallIdSerializer : IListSerializer {
+	public static readonly ScryfallIdSerializer Instance = new();
 	public Deck LoadText(IEnumerable<string> list) {
 		throw new NotImplementedException();
 	}
