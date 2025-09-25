@@ -145,7 +145,7 @@ public class Card {
 	/// An object describing the legality of this card across play formats. Possible legalities are legal, not_legal, restricted, and banned.
 	/// </summary>
 	[JsonPropertyName("legalities")]
-	[JsonConverter(typeof(ScryfallLegalityConverter))]
+	[JsonConverter(typeof(ScryfallLegalitiesConverter))]
 	public required Dictionary<string, Legality> Legalities { get; set; }
 	/// <summary>
 	/// This card’s life modifier, if it is Vanguard card. This value will contain a delta, such as +2.

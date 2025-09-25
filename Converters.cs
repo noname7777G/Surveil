@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace Surveil;
 
-public class ScryfallLegalityConverter : JsonConverter<Dictionary<string, Legality>?> {
+public class ScryfallLegalitiesConverter : JsonConverter<Dictionary<string, Legality>?> {
 	public override Dictionary<string, Legality>? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) {
 		if(reader.TokenType != JsonTokenType.StartObject) { throw new JsonException(); }
 
@@ -92,28 +92,3 @@ public class ScryfallDateConverter : JsonConverter<DateTime?> {
 	}
 }
 
-/// <summary>
-/// Converts Scryfall price strings (e.g. "1.23", null) into decimal?.
-/// </summary>
-public class ScryfallPriceConverter : JsonConverter<decimal?> {
-	public override decimal? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) {
-		if(reader.TokenType == JsonTokenType.String) {
-			var str = reader.GetString();
-			if(decimal.TryParse(str, out var dec))
-				return dec;
-			return null;
-		}
-
-		if(reader.TokenType == JsonTokenType.Null)
-			return null;
-
-		throw new JsonException($"Invalid price value for {typeToConvert}");
-	}
-
-	public override void Write(Utf8JsonWriter writer, decimal? value, JsonSerializerOptions options) {
-		if(value.HasValue)
-			writer.WriteStringValue(value.Value.ToString("0.00"));
-		else
-			writer.WriteNullValue();
-	}
-}

@@ -48,17 +48,18 @@ public enum Format {
 	TinyLeaders,
 }
 public class Deck {
-	public required string Name { get; set; }
+	public string Name { get; set; }
 	public string? Description { get; set; }
 	public char[]? ColorIdentity { get; set; }
-	public required Format Format { get; set; }
-	public required CardCollection LegalCards { get; set; }
+	public Format Format { get; set; }
+	public CardCollection LegalCards { get; set; }
 
-	public required CardCollection MainBoard { get; set; }
-	public required CardCollection SideBoard { get; set; }
-	public required CardCollection MaybeBoard { get; set; }
+	public CardCollection MainBoard { get; set; }
+	public CardCollection SideBoard { get; set; }
+	public CardCollection MaybeBoard { get; set; }
 
-	public Card[]? Commanders { get; set; }
+	public Card? CommanderA { get; set; }
+	public Card? CommanderB { get; set; }
 	public Card? Companion { get; set; }
 
 	/// <summary>
@@ -72,13 +73,10 @@ public class Deck {
 		Name = name;
 		LegalCards = parent.CreateSubCollection(format);
 		Format = format;
-	}
 
-	public static Deck LoadFromFile(IListSerializer listSerializer, string path) {
-		return listSerializer.LoadFile(path);
-	}
-	public static Deck LoadFromText(IListSerializer listSerializer, string list) {
-		return listSerializer.LoadText(list);
+		MainBoard = [];
+		SideBoard = [];
+		MaybeBoard = [];
 	}
 
 	public void SaveToFile(IListSerializer listSerializer, string path) {
