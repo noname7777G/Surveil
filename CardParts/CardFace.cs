@@ -44,10 +44,11 @@ public class CardFace {
 	[JsonPropertyName("illustration_id")]
 	public string? IllustrationId { get; set; }
 	/// <summary>
-	/// An object providing URIs to imagery for this face, if this is a double-sided card. If this card is not double-sided, then the image_uris property will be part of the parent object instead. 
+	/// An object providing URIs to imagery for this face, if this is a double-sided card. 
+	/// <para>If this card is not double-sided, then the image_uris property will be part of the parent object instead.</para>
 	/// </summary>
 	[JsonPropertyName("image_uris")]
-	public ImageUris? ImageUris { get; set; }
+	public Dictionary<string, Uri>? ImageUris { get; set; }
 	/// <summary>
 	/// The layout of this card face, if the card is reversible. 
 	/// </summary>

@@ -298,10 +298,11 @@ public class Card {
 	[JsonPropertyName("image_status")]
 	public required string ImageStatus { get; set; }
 	/// <summary>
-	/// An object listing available imagery for this card. See the Card Imagery article for more information.
+	/// An object providing URIs to imagery for this face, if this is a double-sided card. 
+	/// <para>If this card is not double-sided, then the image_uris property will be part of the parent object instead.</para>
 	/// </summary>
 	[JsonPropertyName("image_uris")]
-	public ImageUris? ImageUris { get; set; }
+	public Dictionary<string, Uri>? ImageUris { get; set; }
 	/// <summary>
 	/// True if this card is oversized.
 	/// </summary>
@@ -341,7 +342,7 @@ public class Card {
 	/// An object providing Uris to this card’s listing on major marketplaces. Omitted if the card is unpurchaseable.
 	/// </summary>
 	[JsonPropertyName("purchase_uris")]
-	public PurchaseUris? PurchaseUris { get; set; }
+	public Dictionary<string, Uri>? PurchaseUris { get; set; }
 	/// <summary>
 	/// This card’s rarity. One of common, uncommon, rare, special, mythic, or bonus.
 	/// </summary>
@@ -351,7 +352,7 @@ public class Card {
 	/// An object providing Uris to this card’s listing on other Magic: The Gathering online resources.
 	/// </summary>
 	[JsonPropertyName("related_uris")]
-	public required RelatedUris RelatedUris { get; set; }
+	public required Dictionary<string, Uri> RelatedUris { get; set; }
 	/// <summary>
 	/// The date this card was first released.
 	/// </summary>
