@@ -20,7 +20,7 @@ public class Card {
 	/// A unique ID for this card in Scryfall’s database.
 	/// </summary>
 	[JsonPropertyName("id")]
-	public required string Id { get; set; }
+	public required Guid Id { get; set; }
 	/// <summary>
 	/// A language code for this printing.
 	/// </summary>
@@ -65,7 +65,7 @@ public class Card {
 	/// A unique ID for this card’s oracle identity. This value is consistent across reprinted card editions, and unique among different cards with the same name (tokens, Unstable variants, etc). Always present except for the reversible_card layout where it will be absent; oracle_id will be found on each face instead.
 	/// </summary>
 	[JsonPropertyName("oracle_id")]
-	public string? OracleId { get; set; }
+	public Guid? OracleId { get; set; }
 	/// <summary>
 	/// A link to where you can begin paginating all re/prints for this card on Scryfall’s API.
 	/// </summary>
@@ -211,7 +211,7 @@ public class Card {
 	/// The IDs of the artists that illustrated this card. Newly spoiled cards may not have this field yet.
 	/// </summary>
 	[JsonPropertyName("artist_ids")]
-	public string[]? ArtistIds { get; set; }
+	public Guid[]? ArtistIds { get; set; }
 	/// <summary>
 	/// The lit Unfinity attractions lights on this card, if any.
 	/// </summary>
@@ -231,7 +231,7 @@ public class Card {
 	/// The Scryfall ID for the card back design present on this card.
 	/// </summary>
 	[JsonPropertyName("card_back_id")]
-	public string? CardBackId { get; set; }
+	public Guid? CardBackId { get; set; }
 	/// <summary>
 	/// This card’s collector number. Note that collector numbers can contain non-numeric characters, such as letters or .
 	/// </summary>
@@ -291,7 +291,7 @@ public class Card {
 	/// A unique identifier for the card artwork that remains consistent across reprints. Newly spoiled cards may not have this field yet.
 	/// </summary>
 	[JsonPropertyName("illustration_id")]
-	public string? IllustrationId { get; set; }
+	public Guid? IllustrationId { get; set; }
 	/// <summary>
 	/// A computer-readable indicator for the state of this card’s image, one of missing, placeholder, lowres, or highres_scan.
 	/// </summary>
@@ -397,7 +397,7 @@ public class Card {
 	/// This card’s Set object Guid.
 	/// </summary>
 	[JsonPropertyName("set_id")]
-	public required string SetId { get; set; }
+	public required Guid SetId { get; set; }
 	/// <summary>
 	/// True if this card is a Story Spotlight.
 	/// </summary>

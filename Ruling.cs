@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 namespace Surveil;
 public class Ruling {
 	[JsonPropertyName("oracle_id")]
-	public required string OracleId { get; set; }
+	public required Guid OracleId { get; set; }
 	[JsonPropertyName("source")]
 	public required string Source { get; set; }
 	[JsonPropertyName("published_at")]
