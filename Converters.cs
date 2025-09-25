@@ -11,15 +11,12 @@ public class ScryfallLegalityConverter : JsonConverter<Dictionary<string, Legali
 
 		while(reader.Read()) {
 			if(reader.TokenType == JsonTokenType.EndObject) { break; }
-
 			if(reader.TokenType != JsonTokenType.PropertyName) { throw new JsonException($"Expect property name at {reader.BytesConsumed} bytes."); }
 
 			string? propertyName = reader.GetString() ?? throw new JsonException($"Property name at {reader.BytesConsumed} bytes is null.");
 
 			reader.Read();
-
 			if(reader.TokenType != JsonTokenType.String) { throw new JsonException($"Value at {reader.BytesConsumed} bytes is not a string."); }
-
 			string value = (string)(reader.GetString() ?? throw new JsonException($"Value at {reader.BytesConsumed} bytes is null."));
 
 			legalities.Add(propertyName, value switch {
@@ -30,11 +27,41 @@ public class ScryfallLegalityConverter : JsonConverter<Dictionary<string, Legali
 				_ => throw new JsonException($"Cannot convert {value} At {reader.BytesConsumed} bytes to {typeof(Legality)}."),
 			});
 		}
-
 		return legalities;
 	}
-
 	public override void Write(Utf8JsonWriter writer, Dictionary<string, Legality>? value, JsonSerializerOptions options) {
+		throw new NotImplementedException();
+	}
+}
+
+public class ScryfallPricesConverter : JsonConverter<Dictionary<string, Decimal?>> {
+	public override Dictionary<string, decimal?> Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) {
+		if(reader.TokenType != JsonTokenType.StartObject) { throw new JsonException(); }
+
+		Dictionary<string, Decimal?> prices = [];
+
+		while(reader.Read()) {
+			if(reader.TokenType == JsonTokenType.EndObject) { break; }
+			if(reader.TokenType != JsonTokenType.PropertyName) { throw new JsonException($"Expect property name at {reader.BytesConsumed} bytes."); }
+
+			string? propertyName = reader.GetString() ?? throw new JsonException($"Property name at {reader.BytesConsumed} bytes is null.");
+
+			reader.Read();
+			string? value = reader.GetString();
+
+			if(value == null) {
+				prices.Add(propertyName, null);
+				continue;
+			} else if(Decimal.TryParse(value, out Decimal decimalValue)) {
+				prices.Add(propertyName, decimalValue);
+			} else {
+				throw new JsonException($"Value at {reader.BytesConsumed} is not a number.");
+			}
+		}
+		return prices;
+	}
+
+	public override void Write(Utf8JsonWriter writer, Dictionary<string, decimal?> value, JsonSerializerOptions options) {
 		throw new NotImplementedException();
 	}
 }

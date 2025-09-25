@@ -312,7 +312,8 @@ public class Card {
 	/// An object containing daily price information for this card, including usd, usd_foil, usd_etched, eur, eur_foil, eur_etched, and tix prices, as strings.
 	/// </summary>
 	[JsonPropertyName("prices")]
-	public required Prices Prices { get; set; }
+	[JsonConverter(typeof(ScryfallPricesConverter))]
+	public required Dictionary<string, Decimal?> Prices { get; set; }
 	/// <summary>
 	/// The localized name printed on this card, if any.
 	/// </summary>
