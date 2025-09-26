@@ -40,7 +40,7 @@ public class MTGOSerializer : IListSerializer {
 
 		return Enumerable.Repeat(card, quantity);
 	}
-
+	//TODO: Implement MTGOSerializer.ToText().
 	public string ToText(Deck deck) {
 		throw new NotImplementedException();
 	}

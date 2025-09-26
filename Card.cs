@@ -9,13 +9,16 @@ public enum Legality {
 	Banned,
 }
 
+public enum Frame { }
+public enum FrameEffect { }
+public enum Layout { }
+
 public class Card {
 	/// <summary>
 	/// This card’s Arena ID, if any. A large percentage of cards are not available on Arena and do not have this ID.
 	/// </summary>
 	[JsonPropertyName("arena_id")]
 	public int? ArenaId { get; set; }
-	//TODO: Look into switching to GUIDs for all apropriate properties.
 	/// <summary>
 	/// A unique ID for this card in Scryfall’s database.
 	/// </summary>

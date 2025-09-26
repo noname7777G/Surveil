@@ -6,8 +6,8 @@ namespace Surveil.CardParts {
 		[JsonConverter(typeof(ScryfallDateConverter))]
 		public DateTime? PreviewedAt { get; set; }
 		[JsonPropertyName("source_uri")]
-		public Uri? SourceUri { get; set; }
+		public required Uri SourceUri { get; set; }
 		[JsonPropertyName("source")]
-		public string? Source { get; set; }
+		public required string Source { get; set; }
 	}
 }
