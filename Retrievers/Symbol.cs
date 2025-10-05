@@ -1,4 +1,4 @@
-﻿namespace Surveil;
+﻿namespace Surveil.Retrievers;
 //TODO: Implement Symbol class.
 internal class Symbol {
 }
